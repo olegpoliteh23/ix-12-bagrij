@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main(void) {
+    float var1, var2;
+    printf("Enter the first number (var1): ");
+    scanf_s("%f", &var1);
+    printf("Enter the second number (var2): ");
+    scanf_s("%f", &var2);
+    printf("var1 > var2 is %d\n", var1 > var2);
+    printf("var1 < var2 is %d\n", var1 < var2);
+    printf("var1 == var2 is %d\n", var1 == var2);
+    printf("var1 >= var2 is %d\n", var1 >= var2);
+    printf("var1 <= var2 is %d\n", var1 <= var2);
+    printf("var1 != var2 is %d\n", var1 != var2);
+    int Ivar1 = var1, Ivar2 = var2; 
+    printf("Ivar1 is %d\n", Ivar1);
+    printf("Ivar2 is %d\n", Ivar2);
+    printf("var1 || var2 is %d\n", var1 || var2);
+    printf("var1 && var2 is %d\n", var1 && var2);
+
+    return 0;
+}
