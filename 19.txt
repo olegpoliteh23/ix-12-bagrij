@@ -1,0 +1,161 @@
+#include <stdio.h>
+
+int main() {
+    FILE* in; // Опис вказівника на файл
+    int ch;
+
+    if ((in = fopen("proba", "r")) != NULL) { // Відкривається файл для читання, перевіряється чи він існує
+        while ((ch = getc(in)) != EOF) { // Поки не досягнуто кінця файлу
+            putc(ch, stdout); // Виведення символа в стандартний потік на екран
+        }
+        fclose(in); // Закриття файлу після завершення роботи з ним
+    }
+    else {
+        printf("Файл proba не відкривається\n");
+    }
+
+    return 0;
+}
+
+б
+
+#include <stdio.h>
+
+int main() {
+    FILE *ff;
+    int base;
+
+    ff = fopen("sam", "r");
+    if (ff == NULL) {
+        printf("Не вдалося відкрити файл sam\n");
+        return 1;
+    }
+
+    fscanf(ff, "%d", &base);
+    fclose(ff);
+
+    ff = fopen("data", "a");
+    if (ff == NULL) {
+        printf("Не вдалося відкрити файл data\n");
+        return 1;
+    }
+
+    fprintf(ff, "sam is %d.\n", base);
+    fclose(ff);
+
+    return 0;
+}
+
+в
+
+#include <stdio.h>
+#define LINE 80
+
+int main() {
+    FILE* ff;
+    char string[LINE];
+
+    ff = fopen("opus", "r");
+
+    while (fgets(string, LINE, ff) != NULL)
+        puts(string);
+
+    return 0;
+}
+
+г
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main() {
+    int f1, f2, f3, f4, f5;
+    FILE *fp;
+    
+    fp = fopen("C:\\temp\\sample.txt", "r");
+    if (fp == NULL) {
+        printf("Не вдалося відкрити файл.\n");
+        return 1;
+    }
+    
+    fscanf(fp, "%d\n%d\n%d\n%d\n%d", &f1, &f2, &f3, &f4, &f5);
+    printf("Значення: %d, %d, %d, %d, %d.\n", f1, f2, f3, f4, f5);
+    
+    fclose(fp);
+    return 0;
+}
+
+2
+
+#include <stdio.h>
+
+int main(void) {
+    FILE *pf;
+    int k;
+
+    // Запис
+    if ((pf = fopen("proba.txt", "w")) == NULL) {
+        perror("proba.txt");
+        return 1;
+    }
+
+    for (k = 0; k <= 5; k++)
+        fprintf(pf, "%d %d\n", k, k * k * k);
+
+    fclose(pf); 
+
+    // Зчитування 
+    int n, nn;
+
+    if ((pf = fopen("proba.txt", "r")) == NULL) {
+        perror("proba.txt");
+        return 1;
+    }
+
+    while (fscanf(pf, "%d %d", &n, &nn) != EOF) {
+        printf("%d %d\n", n, nn);
+    }
+
+    fclose(pf); 
+
+    return 0;
+}
+
+3
+
+#include <stdio.h>
+
+int main() {
+    int numbers[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}; 
+    FILE *file; 
+    int i;
+
+    file = fopen("numbers.txt", "w");
+    if (file == NULL) {
+        perror("Помилка відкриття файлу");
+        return 1;
+    }
+
+    for (i = 0; i < 13; i++) {
+        fprintf(file, "%d ", numbers[i]);
+    }
+
+    fclose(file);
+
+    file = fopen("numbers.txt", "r");
+    if (file == NULL) {
+        perror("Помилка відкриття файлу");
+        return 1;
+    }
+
+    printf("Числа зчитані з файлу:\n");
+    for (i = 0; i < 13; i++) {
+        fscanf(file, "%d", &numbers[i]);
+        printf("%d ", numbers[i]);
+    }
+    printf("\n");
+
+    fclose(file);
+
+    return 0;
+}

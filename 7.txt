@@ -1,0 +1,93 @@
+#include <stdio.h>
+
+int main() {
+    int a = 67;
+    int b = 33;
+    int c = a + b + 7;
+    printf("a + b + 7 = %d\n", c);
+    return 0;
+}
+2
+
+#include <stdio.h>
+
+int main() {
+    int a = 8;
+    int b = 7;
+    int c = a + 5 * b;
+    printf("c = %d \n", c);
+    return 0;
+}
+3
+nclude <stdio.h>
+
+int main() {
+    int a = 8;
+    int b = ++a;
+    printf("a=%d\n", a);
+    printf("b=%d", b);
+    return 0;
+}
+
+4
+
+nclude <stdio.h>
+#include <string.h>
+
+#define PRAISE "Oh, what a wonderful name!"
+
+int main() {
+    char name[50];
+
+    printf("What is your name?\n");
+    scanf_s("%49s", name); 
+
+    printf("Hello, %s, %s\n", name, PRAISE);
+    printf("Your name consists of %zu letters and occupies %zu bytes of memory.\n", strlen(name), sizeof(name));
+    printf("The greeting phrase consists of %zu letters and occupies %zu bytes of memory.\n", strlen(PRAISE), sizeof(PRAISE));
+
+    return 0;
+}
+
+5 
+
+#include <stdio.h>
+
+int main() {
+    float x = 1.4, y = 2;
+    int z;
+
+    z = (int)(x / 2 * 7 + y / 4 - 1);
+    printf("z = %d\n", --z);
+
+    return 0;
+}
+
+6
+
+#include <stdio.h>
+
+int main() {
+    float x = 1.4, y = 2;
+    int z;
+
+    z = (int)(x / 2 * 7 + y / 4 - 1);
+    printf("z = %d\n", --z);
+
+    return 0;
+}
+
+7
+
+#include <stdio.h>
+
+int main() {
+    int x, y = 3;
+    float z;
+
+    x = ++y / 2.0;
+    z = 1.1 * x + 0.3 * x;
+
+    printf("z = %4.1f\n", z);
+    return 0;
+}

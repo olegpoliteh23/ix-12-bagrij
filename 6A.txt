@@ -1,0 +1,167 @@
+#include <stdio.h>
+
+int main() {
+    int a = 10;
+    float b = 3.14159;
+    char c = 'A';
+    long d = 1234567890;
+    printf("Integer: %d\n", a);
+    printf("Floating point variable: %.2f\n", b);
+    printf("Character variable: %c\n", c);
+    printf("Long integer: %ld\n", d);
+    return 0;
+}
+
+2
+
+#include <stdio.h>
+#include <math.h>
+
+float distance(int x1, int y1, int x2, int y2) {
+    int dx = x2 - x1;
+    int dy = y2 - y1;
+    return (float)(dx * dx + dy * dy);
+}
+int main() {
+    int Ax = 1, Ay = 1;
+    int Bx = 214, By = 214 - 12;
+    int Cx = -2, Cy = 14 * 2;
+    float AB_squared = distance(Ax, Ay, Bx, By);
+    float BC_squared = distance(Bx, By, Cx, Cy);
+    float AC_squared = distance(Ax, Ay, Cx, Cy);
+    float p = (AB_squared + BC_squared + AC_squared) * 0.5;
+    float area = sqrt(p * (p - AB_squared) * (p - BC_squared) * (p - AC_squared));
+    float radius = area / p;
+    printf("Triangle Perimeter: %.2f\n", (AB_squared + BC_squared + AC_squared));
+    printf("Triangle Area: %.2f\n", area);
+    printf("Radius of Inscribed Circle: %.2f\n", radius);
+    return 0;
+}
+
+3
+
+#include <stdio.h>
+
+int main() {
+    char x[10] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
+    printf("Character | Decimal | Octal | Hexadecimal\n");
+    printf("-----------------------------------------\n");
+    for (int i = 0; i < 10; i++) {
+        printf("    %c     |   %d    |   %o  |      %x\n", x[i], x[i], x[i], x[i]);
+    }
+    return 0;
+}
+
+4
+
+#include <stdio.h>
+
+int main() {
+    float p1 = 18.5, p2 = 20.0, p3 = 5.75;
+    int k1 = 13, k2 = 25, k3 = 32;
+    float t1 = p1 * k1;
+    float t2 = p2 * k2;
+    float t3 = p3 * k3;
+    float allt = t1 + t2 + t3;
+
+    printf("Item | Price | Quantity | Total Cost\n");
+    printf("--------------------------------------\n");
+    printf("1    | %.2f  |    %d     |    %.2f\n", p1, k1, t1);
+    printf("2    | %.2f  |    %d     |    %.2f\n", p2, k2, t2);
+    printf("3    | %.2f  |    %d     |    %.2f\n", p3, k3, t3);
+    printf("--------------------------------------\n");
+    printf("Total                        %.2f\n", allt);
+    return 0;
+}
+
+#include <stdio.h>
+#define PI 3.14
+
+int main() {
+    float r;
+    printf("Enter the radius of the circle: ");
+    scanf_s("%f", &r);
+    float dw = 2 * PI * r;
+    float pl = PI * r * r;
+    printf("Circumference with radius %.2f: %.2f\n", r, dw);
+    printf("Area of the circle with radius %.2f: %.2f\n", r, pl);
+    return 0;
+}
+
+5
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float a, b, c;
+    float d, r1, r2;
+    printf("Enter coefficients a, b, and c: ");
+    scanf_s("%f %f %f", &a, &b, &c);
+    d = b * b - 4 * a * c;
+    float sqrtd = sqrt(fabs(d));
+    if (d >= 0 && a != 0) {
+        r1 = (-b + sqrtd) / (2 * a);
+        r2 = (-b - sqrtd) / (2 * a);
+
+        printf("Roots of the equation: %.2f and %.2f\n", r1, r2);
+    }
+    else {
+        printf("No real roots exist.\n");
+    }
+    return 0;
+}
+
+6
+
+#include <stdio.h>
+#include <math.h>
+
+float distance(int x1, int y1, int x2, int y2) {
+    int dx = x2 - x1;
+    int dy = y2 - y1;
+    return (float)(dx * dx + dy * dy);
+}
+int main() {
+    int Ax = 1, Ay = 1;
+    int Bx = 214, By = 214 - 1;
+    int Cx = -214, Cy = 14 * 20;
+    float AB_squared = distance(Ax, Ay, Bx, By);
+    float BC_squared = distance(Bx, By, Cx, Cy);
+    float AC_squared = distance(Ax, Ay, Cx, Cy);
+    float p = (AB_squared + BC_squared + AC_squared) * 0.5;
+    float area = sqrt(p * (p - AB_squared) * (p - BC_squared) * (p - AC_squared));
+    float radius = area / p;
+    printf("Triangle Perimeter: %.2f\n", (AB_squared + BC_squared + AC_squared));
+    printf("Triangle Area: %.2f\n", area);
+    printf("Radius of Inscribed Circle: %.2f\n", radius);
+    return 0;
+}
+
+7
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	double a = 1000, b = 0.0001;
+	double result = (a - b) * (a - b) * (a - b) - (a * a * a - b * b * b);
+	cout << result << endl;
+	return 0;
+}
+
+#include <stdio.h>
+
+int main() {
+    double a = 1000;
+    double b = 0.0001;
+    double result;
+    double a_c = a * a * a;
+    double b_c = b * b * b;
+    result = ((a - b) * (a - b) * (a - b) - a_c) / (b_c - 3 * a * b * b - 3 * a * a * b);
+    printf("Result: %lf\n", result);
+    return 0;
+}
+

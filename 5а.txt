@@ -1,0 +1,164 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int rows;
+
+    cout << "Enter the number of rows for the triangle: ";
+    cin >> rows;
+
+    // Validate input for positive rows
+    if (rows <= 0) {
+        cerr << "Error: Please enter a positive number of rows." << endl;
+        return 1;
+    }
+
+    for (int i = 1; i <= rows; ++i) {
+        for (int j = 1; j <= i; ++j) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+2
+
+#include <iostream>
+#include <vector>
+#include <limits>
+
+std::vector<int> factorial(int n) {
+    if (n == 0) {
+        return { 1 };
+    }
+
+    std::vector<int> fact(n + 1, 0);
+    fact[0] = 1;
+
+    for (int i = 1; i <= n; ++i) {
+        int carry = 0;
+        for (int j = 0; j < fact.size(); ++j) {
+            int product = fact[j] * i + carry;
+            fact[j] = product % 10;
+            carry = product / 10;
+        }
+        if (carry > 0) {
+            fact.push_back(carry);
+        }
+    }
+
+    return fact;
+}
+long long double_factorial_sum(int N) {
+    long long sum = 0;
+    for (int i = 1; i <= N; ++i) {
+        std::vector<int> i_fact = factorial(i);
+        for (int j = 1; j <= i; ++j) {
+            std::vector<int> j_fact = factorial(j);
+
+            long long carry = 0;
+            std::vector<int> product(i_fact.size() + j_fact.size(), 0);
+            for (int k = 0; k < product.size(); ++k) {
+                int digit_sum = 0;
+                for (int m = 0; m < i_fact.size() && m <= k; ++m) {
+                    digit_sum += i_fact[m] * (k - m < j_fact.size() ? j_fact[k - m] : 0);
+                }
+                product[k] = (digit_sum + carry) % 10;
+                carry = (digit_sum + carry) / 10;
+            }
+
+            long long product_value = 0;
+            for (int k = product.size() - 1; k >= 0; --k) {
+                product_value = product_value * 10 + product[k];
+            }
+
+            sum += product_value;
+
+            if (sum < 0 || sum > std::numeric_limits<long long>::max()) {
+                std::cerr << "Overflow occurred! Consider using a different method for very large values.\n";
+                return -1;
+            }
+        }
+    }
+
+    return sum;
+}
+int main() {
+    int N;
+    std::cout << "Enter the value of N: ";
+    std::cin >> N;
+
+    long long sum = double_factorial_sum(N);
+
+    if (sum != -1) {
+        std::cout << "The double factorial sum for N = " << N << " is: " << sum << std::endl;
+    }
+
+    return 0;
+}
+
+3
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+const double PI = 3.14;
+
+double f(double x) {
+    return sin(x);
+}
+
+double factorial(int n);
+
+double taylor_series(double x, double a, double eps = 0.00001) {
+    int n = 0;
+    double sum = 0;
+    double term = 1;
+
+    while (abs(term) >= eps) {
+        term = f(a) * pow(x - a, n) / factorial(n);
+        sum += term;
+        n++;
+    }
+
+    return sum;
+}
+
+double factorial(int n) {
+    if (n == 0) {
+        return 1.0;
+    }
+    else {
+        return n * factorial(n - 1);
+    }
+}
+
+int main() {
+    double x, a;
+    double y_lib, y_taylor;
+    int n = 0;
+
+    cout << "Enter the value of x (0 <= x <= pi/2): ";
+    cin >> x;
+
+    if (x >= 0 && x <= PI / 2) {
+        a = 0;
+        y_lib = sin(x);
+        y_taylor = taylor_series(x, a);
+
+        cout << "Value of f(x) using library function: " << y_lib << endl;
+        cout << "Value of f(x) using Taylor series: " << y_taylor << endl;
+    }
+    else {
+        cout << "Invalid value of x." << endl;
+    }
+
+    return 0;
+}
+
+3

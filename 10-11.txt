@@ -1,0 +1,155 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int magic; /* magic number */
+    int guess; /* player's guess */
+    magic = rand() ; /* generate magic number */
+    printf("Guess the magic number: ");
+    scanf_s("%d", &guess);
+    if (guess == magic)
+        printf("** Correct **\n");
+    return 0;
+}
+
+2
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int magic; /* magic number */
+    int guess; /* player's guess */
+    magic = rand(); /* generate magic number */
+    printf("Guess the magic number: ");
+    scanf_s("%d", &guess);
+    if (guess == magic)
+        printf("** Correct **");
+    else
+        printf("Incorrect");
+    return 0;
+}
+
+3
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int magic; /* Magic number */
+    int guess; /* Player's guess */
+    magic = rand();
+    printf("Guess the magic number: ");
+    scanf_s("%d", &guess);
+    if (guess == magic) {
+        printf("** Correct **\n");
+        printf("The magic number is %d\n", magic);
+    }
+    else {
+        printf("** Incorrect, ");
+        if (guess > magic)
+            printf("too large\n"); /* Nested if */
+        else
+            printf("too small\n");
+    }
+    return 0;
+}
+
+4
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    int magic; /* Magic number */
+    int guess; /* Player's guess */
+    magic = rand(); /* Generate magic number */
+    printf("Guess the magic number: ");
+    scanf_s("%d", &guess); /* Take input from the user */
+
+    if (guess == magic) { /* Check if guess is correct */
+        printf("** Correct ** "); /* Print correct message */
+        printf("The magic number is %d\n", magic); /* Print the magic number */
+    }
+    else if (guess > magic)
+        printf("Incorrect, too large"); /* Print message for too large guess */
+    else
+        printf("Incorrect, too small"); /* Print message for too small guess */
+    return 0;
+}
+
+5
+
+#include <stdio.h>
+
+int main(void) {
+    int t;
+    for (t = 0; t < 100; t++) {
+        printf("%d ", t);
+        if (t == 10)
+            break;
+    }
+    return 0;
+}
+
+6
+
+#include <stdio.h>
+
+int main(void) {
+    char s[80], * str;
+    int space;
+    printf("Enter a string: ");
+    gets_s(s);
+
+    str = s;
+    for (space = 0; *str; str++) {
+        if (*str == ' ')  
+            space++;
+    }
+    printf("%d spaces\n", space);
+    return 0;
+}
+
+7
+
+#include <stdio.h>
+
+int main() {
+    float num1, num2, result;
+    char operation;
+
+    printf("Enter the first number: ");
+    scanf_s("%f", &num1);
+    printf("Enter the second number: ");
+    scanf_s("%f", &num2);
+    printf("Enter the operation (+, -, *, /): ");
+    scanf_s(" %c", &operation);
+    if (operation == '+') {
+        result = num1 + num2;
+        printf("Result: %.2f\n", result);
+    }
+    else if (operation == '-') {
+        result = num1 - num2;
+        printf("Result: %.2f\n", result);
+    }
+    else if (operation == '*') {
+        result = num1 * num2;
+        printf("Result: %.2f\n", result);
+    }
+    else if (operation == '/') {
+        if (num2 != 0) {
+            result = num1 / num2;
+            printf("Result: %.2f\n", result);
+        }
+        else {
+            printf("Error: Division by zero is not possible\n");
+        }
+    }
+    else {
+        printf("Error: Invalid operation\n");
+    }
+    return 0;
+}
+
+8
